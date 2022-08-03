@@ -14,7 +14,7 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+    return Array.isArray(value);
     
     
     
@@ -31,8 +31,8 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
-    
+    return (typeof value === "object" && !Array.isArray(value) && value !== null && !(value.getMonth));
+   
     
     
     // YOUR CODE ABOVE HERE //
@@ -46,7 +46,7 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+    return (typeof value === "object" && value !== null && !(value.getMonth));
     
     
     
@@ -74,7 +74,10 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
+    if (Array.isArray(value)) return "array";
+    if (value == null) return "null";
+    if (value.getMonth) return "date";
+    return typeof value;
     
     
     
