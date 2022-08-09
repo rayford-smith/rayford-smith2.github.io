@@ -21,8 +21,8 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    var string;
-    for (var i = input.length-1; i >= 0; i++) {
+    var string = "";
+    for (var i = input.length-1; i >= 0; i--) {
       string += input[i];
     }
     return string;
@@ -31,8 +31,6 @@ function reverseString(input) {
     
     // YOUR CODE GOES ABOVE HERE //
 }
-
-
 
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
