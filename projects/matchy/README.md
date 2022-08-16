@@ -1,4 +1,4 @@
-# Matchy - A social network for Animals
+  # Matchy - A social network for Animals
 
 ## Goals
  - To work in pairs solving real-world programming problems.
