@@ -389,15 +389,14 @@ _.every = function(coll, func) {
                 if (!coll[i]) return false;
             } else if (func(coll[i], i, coll) == false) return false;
         }
-        return true;
     } else {
         for (let key in coll) {
             if (func == undefined) {
                 if (!coll[i]) return false;
             } else if (func(coll[key], key, coll) == false) return false;
         } 
-        return true;
     }
+    return true;
 }
 
 /** _.some
