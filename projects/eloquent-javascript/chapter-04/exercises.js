@@ -2,12 +2,19 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range(start, end, step) {
-  let numArr = [];
-  for (var i = start; i <= end; i += step) {
-    numArr.push[i];
+function range(start, end, step = 1) {
+  var range = [];
+  if (start === end) return range;
+  if (step > 0) {
+    for (let i = start; i <= end; i+=step) {
+      range.push(i);
+    }
+  } else {
+    for (let i = start; i >= end; i+=step) {
+      range.push(i);
+    }
   }
-  return numArr;
+  return range;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -15,6 +22,7 @@ function range(start, end, step) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function sum(arr) {
+
   if (arr.length == 0) return 0;
   return arr[0] + sum(arr.slice(1));
 }
@@ -24,11 +32,13 @@ function sum(arr) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArray(arr) {
+
   let retArr = [];
   for (let i = arr.length-1; i >= 0; i--) {
     retArr.push(arr[i]);
   }
   return retArr;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -36,6 +46,7 @@ function reverseArray(arr) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArrayInPlace(arr) {
+
   for (let i = 0; i < Math.floor(arr.length/2); i++) {
     let holdA = arr[i];
     let holdB = arr[arr.length-1-i];
@@ -43,6 +54,7 @@ function reverseArrayInPlace(arr) {
     arr[arr.length-1-i] = holdA;
   }
   return arr;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -50,18 +62,26 @@ function reverseArrayInPlace(arr) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function arrayToList(arr) {
-  if (arr.length == 0) return null;
-  return {
-    value: arr[0],
-    rest: arrayToList(arr.slice(1))
+
+  let rest = null;
+  
+  for (let i = arr.length-1; i >= 0; i--) {
+    rest = { value : arr[i], rest : rest};
   }
+  return rest;
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
+function listToArray(list, arr = []) {
+  
+  arr.push(list.value);
+  if (list.rest === null) return arr;
+  return listToArray(list.rest, arr);
+
 
 }
 
@@ -69,7 +89,11 @@ function listToArray() {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
+function prepend(val, list) {
+  return {
+    value: val,
+    rest: list
+  }
 
 }
 
@@ -77,7 +101,12 @@ function prepend() {
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
+function nth(list, num) {
+  if (num == 0) {
+    return list.value;
+  }
+  if (list.rest == null) return undefined;
+  return nth(list.rest,num-1);
 
 }
 
@@ -85,8 +114,9 @@ function nth() {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(a,b) {
 
+  return JSON.stringify(a) === JSON.stringify(b) ? true:false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

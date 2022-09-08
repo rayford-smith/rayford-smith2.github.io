@@ -38,5 +38,15 @@ function scope() {
     var val = 1;
 }
 scope();
-console.log(val) // will log undefined
+//console.log(val) // will log undefined
 
+// 7. Closures
+// Functions can access variables outside of their scope if they are defined within the same scope
+function closure() {
+    let x = 5; //cant be accessed outside of function
+    return function(y) {
+        return x + y;
+    }
+}
+add = closure(); //add can access the x variable even though it cant be accessed otherwise
+add(6); // will return 11;

@@ -41,7 +41,7 @@ myVariable = "someString";
 
 // 4. var //
 //used to initialize variables in a global scope 
-var bool = true;
+let bool = true;
 if (bool) {
     var str = "true";
 }
@@ -50,8 +50,8 @@ console.log(str) // prints => true
 
 // 5. let //
 //used to initialize variables in a local scope
-let bool = true;
-if (bool) {
+let bool2 = true;
+if (bool2) {
     let str = "true";
     //str: "true";
 }

@@ -3,13 +3,19 @@
 // /////////////////////////////////////////////////////////////////////////////
 
 function flatten(arr) {
+
+  return arr.reduce((prev,current) => prev.concat(current));
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop() {
+function loop(val, test, update, body) {
+  if (test(val)) {
+    body(val);
+    loop(update(val), test, update, body);
+  }
 
 }
 
@@ -17,7 +23,8 @@ function loop() {
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
+function every(arr, test) {
+  return !arr.some(item => !test(item));
 
 }
 
@@ -25,7 +32,28 @@ function every() {
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
+function dominantDirection(text) {
+  
+  let ltr = [];
+  let rtl = [];
+
+  for (let i = 0; i < text.length; i++) {
+    let scriptName = characterScript(text.charCodeAt(i));
+
+    if (scriptName !== null) {
+      if (scriptName.direction === 'ltr') {
+        ltr.push(scriptName);
+      } else {
+        rtl.push(scriptName);
+      }
+    }
+  }
+
+  if (ltr.length > rtl.length) {
+    return "ltr";
+  } else {
+    return "rtl";
+  }
 
 }
 

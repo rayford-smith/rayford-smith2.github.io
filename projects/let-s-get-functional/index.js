@@ -94,13 +94,14 @@ var friendFirstLetterCount = function(array, obj, char) {
 };
 
 var friendsCount = function(array, name){
-    let retArr = [];
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array[i].friends.length; j++) {
-            if (array[i].friends[j].name === name) retArr.push(array[i].name)
+   return array.filter(function(obj) {
+        for (let i = 0; i < obj.friends.length; i++) {
+            if (obj.friends[i].name == name) return true;
         }
-    }
-    return retArr;
+        return false;
+   }).map(function(obj) {
+    return obj.name;
+   });
 
 };
 
